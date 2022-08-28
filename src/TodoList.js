@@ -8,7 +8,12 @@ function TodoList(props) {
             <List>
                 {props.todoItems.map(t => (
                     <>
-                        <TodoItem todo={t} />
+                        <TodoItem
+                            todo={t}
+                            toggleTodo={props.toggleTodo}
+                            editTodo={props.editTodo}
+                            deleteTodo={props.deleteTodo}
+                        />
                         <Divider />
                     </>
                 ))}
