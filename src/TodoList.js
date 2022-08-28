@@ -1,5 +1,6 @@
 import React from 'react'
-import { Paper, List, ListItem, ListItemText, Divider } from '@mui/material/';
+import { Paper, List, Divider } from '@mui/material/';
+import TodoItem from './TodoItem';
 
 function TodoList(props) {
     return (
@@ -7,9 +8,7 @@ function TodoList(props) {
             <List>
                 {props.todoItems.map(t => (
                     <>
-                        <ListItem key={t.id}>
-                            <ListItemText>{t.task}</ListItemText>
-                        </ListItem>
+                        <TodoItem todo={t} />
                         <Divider />
                     </>
                 ))}

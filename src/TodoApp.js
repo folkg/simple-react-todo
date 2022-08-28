@@ -7,7 +7,7 @@ function TodoApp() {
     const defaultTodos = [
         { id: 1, task: "Water the succulents", completed: false },
         { id: 2, task: "Cut hair", completed: false },
-        { id: 3, task: "Hit the gym", completed: false },
+        { id: 3, task: "Hit the gym", completed: true },
     ];
     const [todoItems, setTodoItems] = useState(defaultTodos);
 
