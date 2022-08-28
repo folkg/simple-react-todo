@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Paper, Typography, AppBar, Toolbar, Grid, Grid2 } from '@mui/material/';
+import { Paper, Typography, AppBar, Toolbar, Grid, Unstable_Grid2 } from '@mui/material/';
 import TodoList from './TodoList';
 import TodoForm from './TodoForm';
 
@@ -25,8 +25,12 @@ function TodoApp() {
                     <Typography>TodoApp</Typography>
                 </Toolbar>
             </AppBar>
-            <TodoForm addTodo={addTodo} />
-            <TodoList todoItems={todoItems} />
+            <Unstable_Grid2 container justifyContent='center' style={{ marginTop: "1rem" }}>
+                <Unstable_Grid2 item xs={11} md={8} lg={4}>
+                    <TodoForm addTodo={addTodo} />
+                    <TodoList todoItems={todoItems} />
+                </Unstable_Grid2>
+            </Unstable_Grid2>
         </Paper>
     )
 }

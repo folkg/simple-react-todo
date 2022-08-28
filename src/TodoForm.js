@@ -11,9 +11,15 @@ function TodoForm({ addTodo }) {
         resetField();
     }
     return (
-        <Paper>
+        <Paper style={{ margin: "1rem 0", padding: "0 1rem" }}>
             <form onSubmit={submitForm}>
-                <TextField onChange={handleChange} value={value} />
+                <TextField
+                    onChange={handleChange}
+                    value={value}
+                    label="Add New Todo Item"
+                    margin="normal"
+                    fullWidth="True"
+                />
             </form>
         </Paper>
     );
