@@ -1,8 +1,20 @@
 import React from 'react'
+import { Paper, List, ListItem, ListItemText, Divider } from '@mui/material/';
 
-function TodoList() {
+function TodoList(props) {
     return (
-        <div>TodoList</div>
+        <Paper>
+            <List>
+                {props.todoItems.map(t => (
+                    <>
+                        <ListItem key={t.id}>
+                            <ListItemText>{t.task}</ListItemText>
+                        </ListItem>
+                        <Divider />
+                    </>
+                ))}
+            </List>
+        </Paper>
     )
 }
 
