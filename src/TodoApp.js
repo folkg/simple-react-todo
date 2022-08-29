@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import useTodoState from './hooks/useTodoState';
 import { v4 as uuidv4 } from 'uuid';
-import { Paper, Typography, AppBar, Toolbar, Grid, Unstable_Grid2 } from '@mui/material/';
+import { Paper, Typography, AppBar, Toolbar, Unstable_Grid2 } from '@mui/material/';
 import TodoList from './TodoList';
 import TodoForm from './TodoForm';
 
@@ -11,16 +11,13 @@ function TodoApp() {
         { id: uuidv4(), task: "Cut hair", completed: false },
         { id: uuidv4(), task: "Hit the gym", completed: true },
     ];
-    const initialTodos = JSON.parse(window.localStorage.getItem("todoItems")) || sampleTodos;
-    const { todoItems, addTodo, toggleTodo, editTodo, deleteTodo } = useTodoState(initialTodos);
 
-    //useEffect for 'todoItems'
-    useEffect(() => {
-        window.localStorage.setItem("todoItems", JSON.stringify(todoItems));
-    }, [todoItems]);
+    const { todoItems, addTodo, toggleTodo, editTodo, deleteTodo } = useTodoState(sampleTodos);
 
     //TODO: Change theme dark/light, colours
-    //TODO:
+    //TODO: Move completed todos to the bottom, different TodoList?
+    // const incompleteTodos = todoItems.filter(t => t.completed);
+    // const completedTodos = todoItems.filter(t => t.completed);
 
     return (
         <Paper style={{

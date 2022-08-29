@@ -1,9 +1,9 @@
-import { useState } from 'react'
+import useLocalStorageState from './useLocalStorageState';
 import { v4 as uuidv4 } from 'uuid';
 
 function useTodoState(initialTodos) {
 
-    const [todoItems, setTodoItems] = useState(initialTodos);
+    const [todoItems, setTodoItems] = useLocalStorageState("todoItems", initialTodos);
 
     const addTodo = (newTodoTask) => {
         setTodoItems([...todoItems, { id: uuidv4(), task: newTodoTask, completed: false }])
