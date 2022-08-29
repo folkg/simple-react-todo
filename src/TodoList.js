@@ -8,16 +8,15 @@ function TodoList(props) {
             <Paper>
                 <List>
                     {props.todoItems.map((t, idx) => (
-                        <>
+                        <React.Fragment key={t.id}>
                             <TodoItem
-                                key={t.id}
                                 todo={t}
                                 toggleTodo={props.toggleTodo}
                                 editTodo={props.editTodo}
                                 deleteTodo={props.deleteTodo}
                             />
                             {(idx < props.todoItems.length - 1) && <Divider />}
-                        </>
+                        </React.Fragment>
                     ))}
                 </List>
             </Paper>
