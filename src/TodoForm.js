@@ -16,6 +16,7 @@ function TodoForm({ addTodo }) {
                 <TextField
                     onChange={handleChange}
                     value={value}
+                    variant="standard"
                     label="Add New Todo Item"
                     margin="normal"
                     fullWidth="True"
