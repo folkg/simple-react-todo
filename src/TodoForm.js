@@ -19,7 +19,7 @@ function TodoForm({ addTodo }) {
                     variant="standard"
                     label="Add New Todo Item"
                     margin="normal"
-                    fullWidth="True"
+                    fullWidth
                 />
             </form>
         </Paper>

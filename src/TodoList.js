@@ -10,6 +10,7 @@ function TodoList(props) {
                     {props.todoItems.map((t, idx) => (
                         <>
                             <TodoItem
+                                key={t.id}
                                 todo={t}
                                 toggleTodo={props.toggleTodo}
                                 editTodo={props.editTodo}
