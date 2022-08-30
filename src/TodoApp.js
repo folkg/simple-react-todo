@@ -1,21 +1,17 @@
 import React from 'react'
-import useTodoState from './hooks/useTodoState';
-import { v4 as uuidv4 } from 'uuid';
+import { TodosProvider } from './contexts/todos.context';
 import { Paper, Typography, AppBar, Toolbar, Unstable_Grid2 } from '@mui/material/';
 import TodoList from './TodoList';
 import TodoForm from './TodoForm';
 
 function TodoApp() {
-    const sampleTodos = [
-        { id: uuidv4(), task: "Water the succulents", completed: false },
-        { id: uuidv4(), task: "Cut hair", completed: false },
-        { id: uuidv4(), task: "Hit the gym", completed: true },
-    ];
-
-    const { todoItems, addTodo, toggleTodo, editTodo, deleteTodo } = useTodoState(sampleTodos);
-
     //TODO: Change theme dark/light, colours
-    //TODO: Move completed todos to the bottom, different TodoList?
+    //https://mui.com/material-ui/customization/dark-mode/
+
+    //TODO: Make this a PWA. Could be good for the budgeting app as well. Any value for the portoflio balancer? Likely not.
+    //https://create-react-app.dev/docs/making-a-progressive-web-app/
+
+    //TODO: Move completed todos to the bottom, different collapsable TodoList?
     // const incompleteTodos = todoItems.filter(t => t.completed);
     // const completedTodos = todoItems.filter(t => t.completed);
 
@@ -31,13 +27,10 @@ function TodoApp() {
             </AppBar>
             <Unstable_Grid2 container justifyContent='center' style={{ marginTop: "1rem" }}>
                 <Unstable_Grid2 item xs={11} md={8} lg={4}>
-                    <TodoForm addTodo={addTodo} />
-                    <TodoList
-                        todoItems={todoItems}
-                        editTodo={editTodo}
-                        toggleTodo={toggleTodo}
-                        deleteTodo={deleteTodo}
-                    />
+                    <TodosProvider>
+                        <TodoForm />
+                        <TodoList />
+                    </TodosProvider>
                 </Unstable_Grid2>
             </Unstable_Grid2>
         </Paper>

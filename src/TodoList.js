@@ -1,21 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react';
+import { TodosContext } from './contexts/todos.context';
 import { Paper, List, Divider } from '@mui/material/';
 import TodoItem from './TodoItem';
 
 function TodoList(props) {
-    if (props.todoItems.length > 0) {
+    const todoItems = useContext(TodosContext);
+
+    if (todoItems.length > 0) {
         return (
             <Paper>
                 <List>
-                    {props.todoItems.map((t, idx) => (
+                    {todoItems.map((t, idx) => (
                         <React.Fragment key={t.id}>
                             <TodoItem
                                 todo={t}
-                                toggleTodo={props.toggleTodo}
-                                editTodo={props.editTodo}
-                                deleteTodo={props.deleteTodo}
                             />
-                            {(idx < props.todoItems.length - 1) && <Divider />}
+                            {(idx < todoItems.length - 1) && <Divider />}
                         </React.Fragment>
                     ))}
                 </List>

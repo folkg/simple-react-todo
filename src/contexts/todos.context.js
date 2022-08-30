@@ -14,8 +14,8 @@ const sampleTodos = [
 export function TodosProvider(props) {
     const [todoItems, dispatch] = useReducer(todoReducer, sampleTodos);
     return (
-        <TodosContext.Provider value={{ todoItems }}>
-            <DispatchContext.Provider value={{ dispatch }}>
+        <TodosContext.Provider value={todoItems}>
+            <DispatchContext.Provider value={dispatch}>
                 {props.children}
             </DispatchContext.Provider>
         </TodosContext.Provider>
