@@ -3,6 +3,7 @@ import todoReducer from '../reducers/todo.reducer';
 import useTodoState from '../hooks/useTodoState';
 
 export const TodosContext = createContext();
+export const DispatchContext = createContext();
 
 const sampleTodos = [
     { id: 1, task: "Water the succulents", completed: false },
@@ -11,10 +12,12 @@ const sampleTodos = [
 ];
 
 export function TodosProvider(props) {
-    const [todos, dispatch] = useReducer(todoReducer, sampleTodos);
+    const [todoItems, dispatch] = useReducer(todoReducer, sampleTodos);
     return (
-        <TodosContext.Provider value={{ todos, dispatch }}>
-            {props.children}
+        <TodosContext.Provider value={{ todoItems }}>
+            <DispatchContext.Provider value={{ dispatch }}>
+                {props.children}
+            </DispatchContext.Provider>
         </TodosContext.Provider>
     )
 }
