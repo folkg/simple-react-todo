@@ -22,7 +22,7 @@ function TodoApp() {
             elevation={0}>
             <AppBar position='static'>
                 <Toolbar>
-                    <Typography>TodoApp</Typography>
+                    <Typography>Todo</Typography>
                 </Toolbar>
             </AppBar>
             <Unstable_Grid2 container justifyContent='center' style={{ marginTop: "1rem" }}>

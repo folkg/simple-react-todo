@@ -12,6 +12,8 @@ const sampleTodos = [
 ];
 
 export function TodosProvider(props) {
+    // 'todoItems' is the piece of state that can be modified by the 'dispatch' method
+    // 'todoItems' will be synced to local storage any time it is modified
     const [todoItems, dispatch] = useLocalStorageReducer("todoItems", sampleTodos, todoReducer);
     return (
         <TodosContext.Provider value={todoItems}>
