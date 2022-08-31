@@ -3,7 +3,7 @@ import { DispatchContext } from './contexts/todos.context';
 import useToggleState from './hooks/useToggleState';
 import EditTodoForm from './EditTodoForm';
 import { ListItem, ListItemText, Checkbox, IconButton, ListItemSecondaryAction } from '@mui/material/';
-import { Delete, Edit } from '@mui/icons-material';
+import { Cancel, Delete, Edit } from '@mui/icons-material';
 
 function TodoItem(props) {
     const { id, task, completed } = props.todo;
@@ -14,7 +14,14 @@ function TodoItem(props) {
     return (
         <ListItem style={{ height: "64px" }}>
             {isEditing ? (
-                <EditTodoForm id={id} task={task} toggleEditing={toggleEditing} />
+                <>
+                    <EditTodoForm id={id} task={task} toggleEditing={toggleEditing} />
+                    <ListItemSecondaryAction>
+                        <IconButton aria-label="Cancel" onClick={toggleEditing}>
+                            <Cancel />
+                        </IconButton>
+                    </ListItemSecondaryAction>
+                </>
             ) : (
                 <>
                     <Checkbox checked={completed} color='secondary' onClick={() => dispatch({ type: "TOGGLE", id: id })} />
