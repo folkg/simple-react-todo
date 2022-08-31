@@ -5,6 +5,8 @@ import { TextField } from '@mui/material/';
 
 function EditTodoForm({ id, task, toggleEditing }) {
 
+    //TODO: Add cancel button that will abort without changing any state. Just toggle editing.
+
     const [value, handleChange] = useInputState(task);
     const dispatch = useContext(DispatchContext);
 
