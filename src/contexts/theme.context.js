@@ -1,25 +1,25 @@
-import React, { useState, createContext } from 'react'
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import React, { useMemo, createContext } from "react";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import useLocalStorageToggleState from "../hooks/useLocalStorageToggleState";
 
 export const DarkModeContext = createContext();
 
 export function DarkModeProvider(props) {
-    const [colourMode, setColourMode] = useState('light');
+  const [darkMode, toggleDarkMode] = useLocalStorageToggleState(false);
 
-    const toggleColourMode = () => {
-        setColourMode(colourMode === 'light' ? 'dark' : 'light')
-    };
-    const theme = createTheme({
+  const theme = useMemo(
+    () =>
+      createTheme({
         palette: {
-            mode: colourMode,
+          mode: darkMode ? "dark" : "light",
         },
-    });
+      }),
+    [darkMode]
+  );
 
-    return (
-        <DarkModeContext.Provider value={{ colourMode, toggleColourMode }}>
-            <ThemeProvider theme={theme}>
-                {props.children}
-            </ThemeProvider>
-        </DarkModeContext.Provider>
-    );
+  return (
+    <DarkModeContext.Provider value={{ darkMode, toggleDarkMode }}>
+      <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
+    </DarkModeContext.Provider>
+  );
 }
