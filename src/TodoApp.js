@@ -8,9 +8,6 @@ import TodoForm from './TodoForm';
 
 function TodoApp() {
 
-    //TODO: Change theme dark/light, colours. Add this into a settings menu. This will be another context.
-    //https://mui.com/material-ui/customization/dark-mode/
-
     //TODO: Move completed todos to the bottom, different collapsable TodoList?
     // const incompleteTodos = todoItems.filter(t => t.completed);
     // const completedTodos = todoItems.filter(t => t.completed);
@@ -21,7 +18,7 @@ function TodoApp() {
     return (
         <DarkModeProvider>
             <Paper style={{
-                padding: 0, margin: 0, height: "100vh", backgroundColor: "#fafafa"
+                padding: 0, margin: 0, height: "100vh"
             }}
                 elevation={0}>
                 <NavBar />
